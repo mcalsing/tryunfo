@@ -1,18 +1,39 @@
 import React from 'react';
 
+const initialState = {
+  cardName: '',
+  cardDescription: '',
+  cardAttr1: '',
+  cardAttr2: '',
+  cardAttr3: '',
+  cardImage: '',
+  cardRare: '',
+  cardTrunfo: '',
+  hasTrunfo: '',
+};
+
 class Form extends React.Component {
   constructor() {
     super();
-    this.state = InitialState;
+    this.state = initialState;
   }
 
   /* const {
-      cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage, 
-      cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled, onInputChange, 
-      onSaveButtonClick
+    cardName,
+    cardDescription,
+    cardAttr1,
+    cardAttr2,
+    cardAttr3,
+    cardImage,
+    cardRare,
+    cardTrunfo,
+    // hasTrunfo,
+    isSaveButtonDisabled,
+    onInputChange,
+    onSaveButtonClick,
   } = this.props; */
 
-  handleClick = (event) => {
+  onInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
@@ -23,102 +44,114 @@ class Form extends React.Component {
     return (
       <form>
         <div>
-          <label>
+          <label htmlFor="name-input">
             Nome:
             <input
               type="text"
               name="name-input"
-              onChange={onInputChange}
+              value={ cardName }
+              onChange={ this.onInputChange }
               data-testid="name-input"
             />
           </label>
         </div>
         <div>
-          <label>
-            Descricao
+          <label htmlFor="description-input">
+            Descricao:
+            <textarea
+              name="description-input"
+              value={ cardDescription }
+              onChange={ this.onInputChange }
+              data-testid="description-input"
+            />
           </label>
-          <textarea
-            name="description-input"
-            onChange={onInputChange}
-            data-testid="description-input"
-          >
-            blalbl
-          </textarea>
         </div>
         <div>
           <div>
-            <label>
+            <label htmlFor="attr1-input">
               Atributo 1:
               <input
                 type="number"
                 name="attr1-input"
-                onChange={onInputChange}
+                value={ cardAttr1 }
+                onChange={ this.onInputChange }
                 data-testid="attr1-input"
               />
             </label>
           </div>
           <div>
-            <label>
+            <label htmlFor="attr2-input">
               Atributo 2:
               <input
                 type="number"
                 name="attr2-input"
-                onChange={onInputChange}
+                value={ cardAttr2 }
+                onChange={ this.onInputChange }
                 data-testid="attr2-input"
               />
             </label>
           </div>
           <div>
-            <label>
+            <label htmlFor="attr3-input">
               Atributo 3:
               <input
                 type="number"
                 name="attr3-input"
-                onChange={onInputChange}
+                value={ cardAttr3 }
+                onChange={ this.onInputChange }
                 data-testid="attr3-input"
               />
             </label>
           </div>
         </div>
         <div>
-          <label>
+          <label htmlFor="image-input">
             Imagem carta:
             <input
               type="text"
               name="image-input"
-              onChange={onInputChange}
+              value={ cardImage }
+              onChange={ this.onInputChange }
               data-testid="image-input"
             />
           </label>
         </div>
-        <label>
+        <label htmlFor="rare-input">
           Raridade:
-          <select name="rare-input" onChange={onInputChange} data-testid="rare-input">
+          <select
+            name="rare-input"
+            value={ cardRare }
+            onChange={ this.onInputChange }
+            data-testid="rare-input"
+          >
             <option value="normal">normal</option>
             <option value="raro">raro</option>
             <option value="muito raro">muito raro</option>
           </select>
         </label>
-        <label>
+        <label htmlFor="trunfo-input">
           Estão indo:
           <input
             type="checkbox"
             name="trunfo-input"
-            onChange={onInputChange}
+            value={ cardTrunfo }
+            onChange={ this.onInputChange }
             data-testid="trunfo-input"
           />
         </label>
         <div>
           <button
             name="save-button"
-            onChange={onSaveButtonClick}
+            type="button"
+            value={ cardTrunfo }
+            onChange={ this.onSaveButtonClick }
             data-testid="save-button"
           >
             Salvar
           </button>
         </div>
       </form>
-    )
+    );
   }
 }
 
