@@ -1,0 +1,69 @@
+input {
+  margin-bottom: 10px;
+  padding: 4px;
+}
+
+.form {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  padding: 10px;
+  width: 350px;
+}
+
+.input-name {
+  display: flex;
+  width: 255px;
+}
+
+.input-description {
+  display: flex;
+}
+
+.input-image {
+  display: flex;
+  width: 255px;
+}
+
+.raridade-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-card {
+  border: 1px solid black;
+  margin: 20px;
+  padding: 10px;
+  width: 350px;
+}
+
+.card-name {
+  background-color: rgb(203, 204, 207);
+}
+
+.ST {
+  background-color: rgb(141, 145, 143);
+  display: flex;
+  justify-content: center;
+}
+
+.div-image {
+  border-style: ridge;
+  display: flex;
+  height: 180px;
+  justify-content: center;
+  width: 343px;
+}
+
+.card-image {
+  width: 180px;
+}
+
+.descript {
+  border-bottom: 1px solid black;
+}
+
+.card-rare {
+  flex-direction: column;
+}

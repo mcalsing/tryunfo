@@ -12,27 +12,41 @@ class Card extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      // isSaveButtonDisabled,
+      // onSaveButtonClick,
     } = this.props;
 
     return (
-      <main>
+      <section className="preview-card">
 
-        <div>
-          <p data-testid="name-card">{cardName}</p>
+        <div className="card-name">
+          Nome da Carta:
+          <span data-testid="name-card">{cardName}</span>
         </div>
-        <div>
-          <span data-testid="rare-card">{cardRare}</span>
-          { cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : '' }
-          <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-          <span data-testid="description-card">{cardDescription}</span>
+        { cardTrunfo ? <p className="ST" data-testid="trunfo-card">Super Trunfo</p> : '' }
+        <div className="div-image">
+          <img
+            className="card-image"
+            src={ cardImage }
+            alt="Imagem"
+            data-testid="image-card"
+          />
         </div>
-        <div>
+        <p className="descript" data-testid="description-card">{cardDescription}</p>
+        Raridade: ________________________
+        <span className="card-rare" data-testid="rare-card">{cardRare}</span>
+        <div className="atributos">
+          Atributo 1: _______________________
           <span data-testid="attr1-card">{cardAttr1}</span>
+          <br />
+          Atributo 2: _______________________
           <span data-testid="attr2-card">{cardAttr2}</span>
+          <br />
+          Atributo 3: _______________________
           <span data-testid="attr3-card">{cardAttr3}</span>
         </div>
 
-      </main>
+      </section>
     );
   }
 }
@@ -46,6 +60,8 @@ Card.propTypes = {
   cardImage: propTypes.string.isRequired,
   cardRare: propTypes.string.isRequired,
   cardTrunfo: propTypes.bool.isRequired,
+  // isSaveButtonDisabled: propTypes.bool.isRequired,
+  // onSaveButtonClick: propTypes.func.isRequired,
 };
 
 export default Card;
