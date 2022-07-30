@@ -6,9 +6,9 @@ import './App.css';
 const initialState = {
   cardName: '',
   cardDescription: '',
-  cardAttr1: '',
-  carddAttr2: '',
-  carddAttr3: '',
+  cardAttr1: '0',
+  cardAttr2: '0',
+  cardAttr3: '0',
   cardImage: '',
   cardRare: '',
   cardTrunfo: 'true',
@@ -73,8 +73,8 @@ class App extends React.Component {
           onInputChange={ this.inputChange }
           cardName={ cardName }
           cardDescription={ cardDescription }
-          cardAttr2={ cardAttr2 }
           cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
           cardAttr3={ cardAttr3 }
           cardImage={ cardImage }
           cardRare={ cardRare }
