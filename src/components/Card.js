@@ -28,7 +28,7 @@ class Card extends React.Component {
           <img
             className="card-image"
             src={ cardImage }
-            alt="Imagem"
+            alt="Nome da carta"
             data-testid="image-card"
           />
         </div>
