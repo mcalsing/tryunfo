@@ -12,8 +12,6 @@ class Card extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // isSaveButtonDisabled,
-      // onSaveButtonClick,
     } = this.props;
 
     return (
@@ -23,7 +21,8 @@ class Card extends React.Component {
           Nome da Carta:
           <span data-testid="name-card">{cardName}</span>
         </div>
-        { cardTrunfo ? <p className="ST" data-testid="trunfo-card">Super Trunfo</p> : '' }
+        {cardTrunfo && <p className="ST" data-testid="trunfo-card">Super Trunfo</p>}
+        {/* { cardTrunfo ? <p className="ST" data-testid="trunfo-card">Super Trunfo</p> : '' } */}
         <div className="div-image">
           <img
             className="card-image"
