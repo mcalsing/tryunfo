@@ -59,7 +59,6 @@ Card.propTypes = {
   cardRare: propTypes.string.isRequired,
   cardTrunfo: propTypes.bool.isRequired,
   // isSaveButtonDisabled: propTypes.bool.isRequired,
-  // onSaveButtonClick: propTypes.func.isRequired,
 };
 
 export default Card;
