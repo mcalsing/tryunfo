@@ -69,8 +69,8 @@ input {
 }
 
 .card-buider {
+  border-bottom: 3px solid black;
   display: flex;
-  border-bottom: 3px solid rgb(0, 0, 0);
 }
 
 .deck-list {
