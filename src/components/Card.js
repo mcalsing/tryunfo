@@ -21,8 +21,7 @@ class Card extends React.Component {
           Nome da Carta:
           <span data-testid="name-card">{cardName}</span>
         </div>
-        {/* {cardTrunfo && <p className="ST" data-testid="trunfo-card">Super Trunfo</p>} */}
-        { cardTrunfo ? <p className="ST" data-testid="trunfo-card">Super Trunfo</p> : '' }
+        {cardTrunfo && <p className="ST" data-testid="trunfo-card">Super Trunfo</p>}
         <div className="div-image">
           <img
             className="card-image"
@@ -32,16 +31,16 @@ class Card extends React.Component {
           />
         </div>
         <p className="descript" data-testid="description-card">{cardDescription}</p>
-        Raridade: ________________________
+        Raridade: ______________________
         <span className="card-rare" data-testid="rare-card">{cardRare}</span>
         <div className="atributos">
-          Atributo 1: _______________________
+          Atributo 1: _____________________
           <span data-testid="attr1-card">{cardAttr1}</span>
           <br />
-          Atributo 2: _______________________
+          Atributo 2: _____________________
           <span data-testid="attr2-card">{cardAttr2}</span>
           <br />
-          Atributo 3: _______________________
+          Atributo 3: _____________________
           <span data-testid="attr3-card">{cardAttr3}</span>
         </div>
 

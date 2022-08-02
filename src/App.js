@@ -14,6 +14,7 @@ const initialState = {
   cardTrunfo: false,
   hasTrunfo: false,
   isSaveButtonDisabled: true,
+  deck: [],
 };
 
 class App extends React.Component {
@@ -27,6 +28,7 @@ class App extends React.Component {
     const value = event.target.type === 'checkbox'
       ? event.target.checked : event.target.value;
     this.setState({
+
       [name]: value,
     }, () => {
       const { cardName, cardDescription, cardImage, cardRare } = this.state;
@@ -52,18 +54,32 @@ class App extends React.Component {
     });
   }
 
-  saveButtonClick = () => {
-    const { cardTrunfo } = this.state;
+  saveButtonClick = (event) => {
+    const { cardTrunfo, cardName, cardDescription, cardImage, cardRare } = this.state;
+    const { cardAttr1, cardAttr2, cardAttr3, deck } = this.state;
     const isTrunfo = cardTrunfo;
+    event.preventDefault();
+    const oneCard = {
+      cardTrunfo,
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    };
+
     this.setState({
       cardName: '',
       cardDescription: '',
       cardImage: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardRare: 'normal',
       hasTrunfo: isTrunfo,
+      deck: [...deck, oneCard],
     });
   }
 
@@ -79,37 +95,62 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      deck,
     } = this.state;
 
+    const showCards = deck.map((card) => (
+      <Card
+        key={ card.name }
+        cardName={ card.cardName }
+        cardDescription={ card.cardDescription }
+        cardImage={ card.cardImage }
+        cardAttr1={ card.cardAttr1 }
+        cardAttr2={ card.cardAttr2 }
+        cardAttr3={ card.cardAttr3 }
+        cardRare={ card.cardRare }
+        cardTrunfo={ card.cardTrunfo }
+      />
+    ));
+
     return (
-      <div>
-        <h1>Tryunfo</h1>
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.inputChange }
-          onSaveButtonClick={ this.saveButtonClick }
-        />
-        <Card
-          onInputChange={ this.inputChange }
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr2={ cardAttr2 }
-          cardAttr1={ cardAttr1 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
-      </div>
+      <main>
+        <section className="card-buider">
+          <div>
+            <h2>Card Builder</h2>
+            <Form
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              hasTrunfo={ hasTrunfo }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+              onInputChange={ this.inputChange }
+              onSaveButtonClick={ this.saveButtonClick }
+            />
+          </div>
+          <div>
+            <h2>Preview</h2>
+            <Card
+              onInputChange={ this.inputChange }
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr2={ cardAttr2 }
+              cardAttr1={ cardAttr1 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+            />
+          </div>
+        </section>
+        <div className="deck-list">
+          { showCards.length > 0 ? showCards : '' }
+        </div>
+      </main>
     );
   }
 }
